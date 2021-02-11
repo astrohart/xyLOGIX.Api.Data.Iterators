@@ -1,28 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using xyLOGIX.Core.Debug;
 
 namespace xyLOGIX.Data.Iterators.Interfaces
 {
    /// <summary>
-   /// Defines the public-exposed methods and properties of an object that
-   /// iterates over a data set whose total number of items is not known in
-   /// advance. Each data item is referenced as an instance of
-   /// <typeparamref name="T" />.
+   /// Implements the
+   /// <see
+   ///    cref="T:xyLOGIX.Data.Iterators.Interfaces.IIterator" />
+   /// interface for all
+   /// objects that provide differing behaviors of the iteration process.
    /// </summary>
    /// <typeparam name="T">
-   /// Name of a class that represents a single element of the collection.
    /// </typeparam>
-   public interface IIterator<T> where T : class
+   public abstract class IteratorBase<T> : IIterator<T> where T : class
    {
       /// <summary>
       /// Occurs when the end of the collection has been reached.
       /// </summary>
-      event EventHandler LastItemReached;
+      public abstract event EventHandler LastItemReached;
 
       /// <summary>
       /// Occurs when no items have been found in the underlying collection.
       /// </summary>
-      event EventHandler NoItemsFound;
+      public abstract event EventHandler NoItemsFound;
 
       /// <summary>
       /// Gets the entire collection and returns an enumerator to be used to
@@ -41,7 +43,29 @@ namespace xyLOGIX.Data.Iterators.Interfaces
       /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
       /// methods in order to obtain all the elements.
       /// </remarks>
-      IEnumerable<T> GetAll();
+      public IEnumerable<T> GetAll()
+      {
+         IEnumerable<T> result;
+         
+         try
+         {
+            var items = new List<T>();
+
+            while (HasNext()) 
+               items.Add(GetNext());
+
+            result = items;
+         }
+         catch (Exception ex)
+         {
+            // dump all the exception info to the log
+            DebugUtils.LogException(ex);
+
+            result = Enumerable.Empty<T>();
+         }
+
+         return result;
+      }
 
       /// <summary>
       /// Returns a reference to an instance of <typeparamref name="T" /> that is
@@ -64,7 +88,7 @@ namespace xyLOGIX.Data.Iterators.Interfaces
       /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
       /// returns <c>false</c>, this method will still return a non- <c>null</c> value.
       /// </remarks>
-      T GetNext();
+      public abstract T GetNext();
 
       /// <summary>
       /// Determines whether the collection has more items.
@@ -72,6 +96,6 @@ namespace xyLOGIX.Data.Iterators.Interfaces
       /// <returns>
       /// <c>True</c> if the collection has more items; <c>false</c> otherwise.
       /// </returns>
-      bool HasNext();
+      public abstract bool HasNext();
    }
 }
