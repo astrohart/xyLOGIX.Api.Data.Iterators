@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using xyLOGIX.Core.Debug;
 
 namespace xyLOGIX.Data.Iterators.Interfaces
 {
