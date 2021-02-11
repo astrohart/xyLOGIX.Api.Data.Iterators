@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Events", "xyLOGIX.Data.Iterators.Events\xyLOGIX.Data.Iterators.Events.csproj", "{3E3DB35C-0B83-4D8C-AC6B-22A085117026}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Interfaces", "xyLOGIX.Data.Iterators.Interfaces\xyLOGIX.Data.Iterators.Interfaces.csproj", "{6C7EC464-BCD6-43A7-A147-984E404F43FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{3E3DB35C-0B83-4D8C-AC6B-22A085117026}.Release|x64.Build.0 = Release|x64
 		{3E3DB35C-0B83-4D8C-AC6B-22A085117026}.Release|x86.ActiveCfg = Release|x86
 		{3E3DB35C-0B83-4D8C-AC6B-22A085117026}.Release|x86.Build.0 = Release|x86
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Debug|x64.ActiveCfg = Debug|x64
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Debug|x64.Build.0 = Debug|x64
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Debug|x86.ActiveCfg = Debug|x86
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Debug|x86.Build.0 = Debug|x86
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Release|x64.ActiveCfg = Release|x64
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Release|x64.Build.0 = Release|x64
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Release|x86.ActiveCfg = Release|x86
+		{6C7EC464-BCD6-43A7-A147-984E404F43FD}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
