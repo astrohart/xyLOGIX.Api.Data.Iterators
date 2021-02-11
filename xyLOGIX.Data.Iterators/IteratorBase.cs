@@ -48,6 +48,13 @@ namespace xyLOGIX.Data.Iterators
       /// and
       /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
       /// methods in order to obtain all the elements.
+      /// <para />
+      /// This method raises the
+      /// <see
+      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError" />
+      /// event if
+      /// an exception gets raised during the iteration process. In this case,
+      /// this method then returns the empty enumerable.
       /// </remarks>
       public IEnumerable<T> GetAll()
       {
