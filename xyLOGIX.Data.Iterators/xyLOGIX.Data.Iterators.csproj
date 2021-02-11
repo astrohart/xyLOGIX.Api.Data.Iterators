@@ -90,6 +90,10 @@
       <Project>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</Project>
       <Name>xyLOGIX.Data.Iterators.Events</Name>
     </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Data.Iterators.Exceptions\xyLOGIX.Data.Iterators.Exceptions.csproj">
+      <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>xyLOGIX.Data.Iterators.Exceptions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Data.Iterators.Interfaces\xyLOGIX.Data.Iterators.Interfaces.csproj">
       <Project>{6C7EC464-BCD6-43A7-A147-984E404F43FD}</Project>
       <Name>xyLOGIX.Data.Iterators.Interfaces</Name>

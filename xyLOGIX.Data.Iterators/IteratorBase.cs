@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using xyLOGIX.Data.Iterators.Events;
+using xyLOGIX.Data.Iterators.Exceptions;
 using xyLOGIX.Data.Iterators.Interfaces;
 
 namespace xyLOGIX.Data.Iterators
@@ -71,7 +72,14 @@ namespace xyLOGIX.Data.Iterators
          }
          catch (Exception ex)
          {
-            OnIterationError(new IterationErrorEventArgs(ex));
+            OnIterationError(
+               new IterationErrorEventArgs(
+                  new IteratorException(
+                     "A problem was occurred during the iteration operation.",
+                     ex
+                  )
+               )
+            );
 
             result = Enumerable.Empty<T>();
          }

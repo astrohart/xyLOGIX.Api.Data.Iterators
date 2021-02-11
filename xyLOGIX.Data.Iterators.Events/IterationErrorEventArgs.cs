@@ -1,4 +1,5 @@
 ﻿using System;
+using xyLOGIX.Data.Iterators.Exceptions;
 
 namespace xyLOGIX.Data.Iterators.Events
 {
@@ -16,22 +17,22 @@ namespace xyLOGIX.Data.Iterators.Events
       /// returns a reference to it.
       /// </summary>
       /// <param name="exception">
-      /// (Required.) A <see cref="T:System.Exception" /> that describes the error.
+      /// (Required.) A <see cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" /> that describes the error.
       /// </param>
       /// <exception cref="T:System.ArgumentNullException">
       /// Thrown if the required parameter, <paramref name="exception" />, is
       /// <c>null</c> .
       /// </exception>
-      public IterationErrorEventArgs(Exception exception)
+      public IterationErrorEventArgs(IteratorException exception)
       {
          Exception = exception ??
                      throw new ArgumentNullException(nameof(exception));
       }
 
       /// <summary>
-      /// Gets a reference to a <see cref="T:System.Exception" /> that contains
+      /// Gets a reference to a <see cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" /> that contains
       /// the error information.
       /// </summary>
-      public Exception Exception { get; }
+      public IteratorException Exception { get; }
    }
 }
