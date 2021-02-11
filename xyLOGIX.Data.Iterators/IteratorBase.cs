@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using xyLOGIX.Data.Iterators.Events;
 using xyLOGIX.Data.Iterators.Interfaces;
 
 namespace xyLOGIX.Data.Iterators
@@ -16,6 +17,20 @@ namespace xyLOGIX.Data.Iterators
    /// </typeparam>
    public abstract class IteratorBase<T> : IIterator<T> where T : class
    {
+      /// <summary>
+      /// Occurs when an exception is thrown during the iteration process.
+      /// </summary>
+      public event IterationErrorEventHandler IterationError;
+
+      /// <summary>
+      /// Raises the <see cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError"/> event.
+      /// </summary>
+      /// <param name="e">
+      /// A <see cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs"/> that contains the event data.
+      /// </param>
+      protected virtual void OnIterationError(IterationErrorEventArgs e)
+         => IterationError?.Invoke(this, e);
+
       /// <summary>
       /// Occurs when the end of the collection has been reached.
       /// </summary>
