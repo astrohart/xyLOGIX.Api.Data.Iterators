@@ -23,15 +23,6 @@ namespace xyLOGIX.Data.Iterators
       public event IterationErrorEventHandler IterationError;
 
       /// <summary>
-      /// Raises the <see cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError"/> event.
-      /// </summary>
-      /// <param name="e">
-      /// A <see cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs"/> that contains the event data.
-      /// </param>
-      protected virtual void OnIterationError(IterationErrorEventArgs e)
-         => IterationError?.Invoke(this, e);
-
-      /// <summary>
       /// Occurs when the end of the collection has been reached.
       /// </summary>
       public event EventHandler LastItemReached;
@@ -109,6 +100,22 @@ namespace xyLOGIX.Data.Iterators
       /// <c>True</c> if the collection has more items; <c>false</c> otherwise.
       /// </returns>
       public abstract bool HasNext();
+
+      /// <summary>
+      /// Raises the
+      /// <see
+      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError" />
+      /// event.
+      /// </summary>
+      /// <param name="e">
+      /// A
+      /// <see
+      ///    cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs" />
+      /// that
+      /// contains the event data.
+      /// </param>
+      protected virtual void OnIterationError(IterationErrorEventArgs e)
+         => IterationError?.Invoke(this, e);
 
       /// <summary>
       /// Raises the
