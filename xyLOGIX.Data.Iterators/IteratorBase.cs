@@ -19,12 +19,12 @@ namespace xyLOGIX.Data.Iterators
       /// <summary>
       /// Occurs when the end of the collection has been reached.
       /// </summary>
-      public abstract event EventHandler LastItemReached;
+      public event EventHandler LastItemReached;
 
       /// <summary>
       /// Occurs when no items have been found in the underlying collection.
       /// </summary>
-      public abstract event EventHandler NoItemsFound;
+      public event EventHandler NoItemsFound;
 
       /// <summary>
       /// Gets the entire collection and returns an enumerator to be used to
@@ -46,21 +46,18 @@ namespace xyLOGIX.Data.Iterators
       public IEnumerable<T> GetAll()
       {
          IEnumerable<T> result;
-         
+
          try
          {
             var items = new List<T>();
 
-            while (HasNext()) 
+            while (HasNext())
                items.Add(GetNext());
 
             result = items;
          }
          catch (Exception ex)
          {
-            // dump all the exception info to the log
-            DebugUtils.LogException(ex);
-
             result = Enumerable.Empty<T>();
          }
 
@@ -97,5 +94,23 @@ namespace xyLOGIX.Data.Iterators
       /// <c>True</c> if the collection has more items; <c>false</c> otherwise.
       /// </returns>
       public abstract bool HasNext();
+
+      /// <summary>
+      /// Raises the
+      /// <see
+      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.LastItemReached" />
+      /// event.
+      /// </summary>
+      protected virtual void OnLastItemReached()
+         => LastItemReached?.Invoke(this, EventArgs.Empty);
+
+      /// <summary>
+      /// Raises the
+      /// <see
+      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.NoItemsFound" />
+      /// event.
+      /// </summary>
+      protected virtual void OnNoItemsFound()
+         => NoItemsFound?.Invoke(this, EventArgs.Empty);
    }
 }

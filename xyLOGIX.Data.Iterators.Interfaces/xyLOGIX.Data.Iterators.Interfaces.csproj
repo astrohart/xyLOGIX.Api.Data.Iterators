@@ -85,11 +85,5 @@
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\unversioned\astrohart\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj">
-      <Project>{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}</Project>
-      <Name>xyLOGIX.Core.Debug</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators", "xyLOGIX.Data.Iterators\xyLOGIX.Data.Iterators.csproj", "{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Core.Debug", "..\..\..\unversioned\astrohart\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj", "{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -52,14 +50,6 @@ Global
 		{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}.Release|x64.Build.0 = Release|x64
 		{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}.Release|x86.ActiveCfg = Release|x86
 		{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}.Release|x86.Build.0 = Release|x86
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Debug|x64.ActiveCfg = Debug|x64
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Debug|x64.Build.0 = Debug|x64
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Debug|x86.ActiveCfg = Debug|x86
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Debug|x86.Build.0 = Debug|x86
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Release|x64.ActiveCfg = Release|x64
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Release|x64.Build.0 = Release|x64
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Release|x86.ActiveCfg = Release|x86
-		{FB2AAB00-0D1D-479D-B0DB-FBBCDC1C6851}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
