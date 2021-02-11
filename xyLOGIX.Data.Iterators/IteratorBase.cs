@@ -64,6 +64,8 @@ namespace xyLOGIX.Data.Iterators
          }
          catch (Exception ex)
          {
+            OnIterationError(new IterationErrorEventArgs(ex));
+
             result = Enumerable.Empty<T>();
          }
 
