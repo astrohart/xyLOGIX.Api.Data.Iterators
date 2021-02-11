@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using xyLOGIX.Data.Iterators.Events;
 
 namespace xyLOGIX.Data.Iterators.Interfaces
 {
@@ -14,6 +15,11 @@ namespace xyLOGIX.Data.Iterators.Interfaces
    /// </typeparam>
    public interface IIterator<T> where T : class
    {
+      /// <summary>
+      /// Occurs when an exception is thrown during the iteration process.
+      /// </summary>
+      event IterationErrorEventHandler IterationError;
+
       /// <summary>
       /// Occurs when the end of the collection has been reached.
       /// </summary>
