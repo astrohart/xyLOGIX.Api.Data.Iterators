@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators", "xyLOGIX.Data.Iterators\xyLOGIX.Data.Iterators.csproj", "{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Constants", "xyLOGIX.Data.Iterators.Constants\xyLOGIX.Data.Iterators.Constants.csproj", "{84C1F71A-AAA4-4A08-9728-19E710965E4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Data.Iterators.Exceptions", "xyLOGIX.Data.Iterators.Exceptions\xyLOGIX.Data.Iterators.Exceptions.csproj", "{84C1F71A-AAA4-4A08-9728-19E710965E4D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
