@@ -8,16 +8,24 @@ using xyLOGIX.Data.Iterators.Interfaces;
 namespace xyLOGIX.Data.Iterators
 {
    /// <summary>
-   /// Implements the
-   /// <see
-   ///    cref="T:xyLOGIX.Data.Iterators.Interfaces.IIterator" />
-   /// interface for all
+   /// Implements the <see
+   /// cref="T:xyLOGIX.Data.Iterators.Interfaces.IIterator"/> interface for all
    /// objects that provide differing behaviors of the iteration process.
    /// </summary>
    /// <typeparam name="T">
    /// </typeparam>
    public abstract class IteratorBase<T> : IIterator<T> where T : class
    {
+      /// <summary>
+      /// Constructs a new instance of <see
+      /// cref="T:xyLOGIX.Data.Iterators.IteratorBase"/> and returns a reference
+      /// to it.
+      /// </summary>
+      protected IteratorBase()
+      {
+         IsLastPage = false;
+      }
+
       /// <summary>
       /// Occurs when an exception is thrown during the iteration process.
       /// </summary>
@@ -34,41 +42,54 @@ namespace xyLOGIX.Data.Iterators
       public event EventHandler NoItemsFound;
 
       /// <summary>
+      /// Gets a reference to a cache of items obtained that are in excess of
+      /// what is requested, but which still need to be provided to users of
+      /// this object.
+      /// </summary>
+      protected Stack<T> ExcessItemCache { get; } = new Stack<T>();
+
+      /// <summary>
+      /// Gets or sets a value indicating whether the last page of paginated
+      /// data has been read from the data source.
+      /// </summary>
+      protected bool IsLastPage { get; set; }
+
+      /// <summary>
       /// Gets the entire collection and returns an enumerator to be used to
       /// iterate over it.
       /// </summary>
       /// <returns>
       /// Reference to an instance of a collection object that implements the
-      /// <see cref="T:System.Collections.Generic.IEnumerable{T}" /> interface.
+      /// <see cref="T:System.Collections.Generic.IEnumerable{T}"/> interface.
       /// This contains all the elements of the entire data set.
       /// </returns>
       /// <remarks>
-      /// Implementations should generally call the
-      /// <see
-      ///    cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.GetNext" />
-      /// and
-      /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
+      /// Implementations should generally call the <see
+      /// cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.GetNext"/> and
+      /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext"/>
       /// methods in order to obtain all the elements.
-      /// <para />
-      /// This method raises the
-      /// <see
-      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError" />
-      /// event if
+      /// <para/>
+      /// This method raises the <see
+      /// cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError"/> event if
       /// an exception gets raised during the iteration process. In this case,
       /// this method then returns the empty enumerable.
       /// </remarks>
       public IEnumerable<T> GetAll()
       {
-         IEnumerable<T> result;
+         var result = new List<T>();
+
+         IsLastPage = false;
 
          try
          {
-            var items = new List<T>();
+            var current = default(T);
 
-            while (HasNext())
-               items.Add(GetNext());
-
-            result = items;
+            do
+            {
+               current = GetNext();
+               if (current == null) break;
+               result.Add(current);
+            } while (current != null && HasNext());
          }
          catch (Exception ex)
          {
@@ -81,21 +102,22 @@ namespace xyLOGIX.Data.Iterators
                )
             );
 
-            result = Enumerable.Empty<T>();
+            // in the event an exception occurred, just return the empty list
+            result = new List<T>();
          }
 
          return result;
       }
 
       /// <summary>
-      /// Returns a reference to an instance of <typeparamref name="T" /> that is
+      /// Returns a reference to an instance of <typeparamref name="T"/> that is
       /// the current item in the data set that the iterator is now pointing to.
       /// </summary>
       /// <typeparam name="T">
       /// Name of the class that represents a single element of the data set.
       /// </typeparam>
       /// <returns>
-      /// Reference to the instance of <typeparamref name="T" /> that represents
+      /// Reference to the instance of <typeparamref name="T"/> that represents
       /// the current element in the iteration, or <c>null</c> if the end of the
       /// collection has been passed.
       /// </returns>
@@ -103,9 +125,8 @@ namespace xyLOGIX.Data.Iterators
       /// This method returns a reference to the current element of the data
       /// set. When called, this method will automatically advance the
       /// current-item pointer to the next element in the list.
-      /// <para />
-      /// NOTE: Even if
-      /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
+      /// <para/>
+      /// NOTE: Even if <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext"/>
       /// returns <c>false</c>, this method will still return a non- <c>null</c> value.
       /// </remarks>
       public abstract T GetNext();
@@ -119,35 +140,53 @@ namespace xyLOGIX.Data.Iterators
       public abstract bool HasNext();
 
       /// <summary>
-      /// Raises the
-      /// <see
-      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError" />
-      /// event.
+      /// Caches excess items in a collection retrieved from the data source
+      /// that we are iterating over.
+      /// </summary>
+      /// <param name="excessItems">
+      /// Collection of references to instances of <typeparamref name="T"/> that
+      /// need to be cached.
+      /// </param>
+      /// <remarks>
+      /// When overriding this method, implementers must start by calling the
+      /// base class.
+      /// </remarks>
+      protected virtual void CacheExcess(IEnumerable<T> excessItems)
+      {
+         var excessItemArray = excessItems as T[] ?? excessItems.ToArray();
+         if (!excessItemArray.Any()) // nothing to do
+            return;
+
+         // If we are here, then there are excess items, over and above the
+         // single "current item" that this iterator step through. In that
+         // event, push all the excess items on to the Excess Item Cache stack.
+
+         foreach (var item in excessItemArray)
+            ExcessItemCache.Push(item);
+      }
+
+      /// <summary>
+      /// Raises the <see
+      /// cref="E:xyLOGIX.Data.Iterators.IteratorBase.IterationError"/> event.
       /// </summary>
       /// <param name="e">
-      /// A
-      /// <see
-      ///    cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs" />
-      /// that
+      /// A <see
+      /// cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs"/> that
       /// contains the event data.
       /// </param>
       protected virtual void OnIterationError(IterationErrorEventArgs e)
          => IterationError?.Invoke(this, e);
 
       /// <summary>
-      /// Raises the
-      /// <see
-      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.LastItemReached" />
-      /// event.
+      /// Raises the <see
+      /// cref="E:xyLOGIX.Data.Iterators.IteratorBase.LastItemReached"/> event.
       /// </summary>
       protected virtual void OnLastItemReached()
          => LastItemReached?.Invoke(this, EventArgs.Empty);
 
       /// <summary>
-      /// Raises the
-      /// <see
-      ///    cref="E:xyLOGIX.Data.Iterators.IteratorBase.NoItemsFound" />
-      /// event.
+      /// Raises the <see
+      /// cref="E:xyLOGIX.Data.Iterators.IteratorBase.NoItemsFound"/> event.
       /// </summary>
       protected virtual void OnNoItemsFound()
          => NoItemsFound?.Invoke(this, EventArgs.Empty);
