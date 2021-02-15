@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using xyLOGIX.Data.Iterators.Events;
+using xyLOGIX.Api.Data.Iterators.Events;
 
-namespace xyLOGIX.Data.Iterators.Interfaces
+namespace xyLOGIX.Api.Data.Iterators.Interfaces
 {
    /// <summary>
    /// Defines the public-exposed methods and properties of an object that
@@ -13,7 +13,7 @@ namespace xyLOGIX.Data.Iterators.Interfaces
    /// <typeparam name="T">
    /// Name of a class that represents a single element of the collection.
    /// </typeparam>
-   public interface IIterator<T> where T : class
+   public interface IIterator<T> : IEnumerator<T> where T : class
    {
       /// <summary>
       /// Occurs when an exception is thrown during the iteration process.
@@ -42,9 +42,9 @@ namespace xyLOGIX.Data.Iterators.Interfaces
       /// <remarks>
       /// Implementations should generally call the
       /// <see
-      ///    cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.GetNext" />
+      ///    cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext" />
       /// and
-      /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
+      /// <see cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext" />
       /// methods in order to obtain all the elements.
       /// </remarks>
       IEnumerable<T> GetAll();
@@ -67,7 +67,7 @@ namespace xyLOGIX.Data.Iterators.Interfaces
       /// current-item pointer to the next element in the list.
       /// <para />
       /// NOTE: Even if
-      /// <see cref="M:xyLOGIX.Data.Iterators.Interfaces.IIterator.HasNext" />
+      /// <see cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext" />
       /// returns <c>false</c>, this method will still return a non- <c>null</c> value.
       /// </remarks>
       T GetNext();

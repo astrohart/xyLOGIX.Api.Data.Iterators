@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</ProjectGuid>
+    <ProjectGuid>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -58,17 +58,18 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Data.Iterators.Exceptions</AssemblyName>
+    <AssemblyName>xyLOGIX.Api.Data.Iterators.Events</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Data.Iterators.Exceptions</RootNamespace>
+    <RootNamespace>xyLOGIX.Api.Data.Iterators.Events</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IteratorException.cs" />
+    <Compile Include="IterationErrorEventArgs.cs" />
+    <Compile Include="IterationErrorEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +85,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="1382_cogs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+      <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

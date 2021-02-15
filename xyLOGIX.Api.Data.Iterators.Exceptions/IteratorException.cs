@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace xyLOGIX.Data.Iterators.Exceptions
+namespace xyLOGIX.Api.Data.Iterators.Exceptions
 {
    /// <summary>
    /// Represents an exception thrown by an iterator object.
@@ -10,7 +10,7 @@ namespace xyLOGIX.Data.Iterators.Exceptions
       /// <summary>
       /// Constructs a new instance of
       /// <see
-      ///    cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" />
+      ///    cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" />
       /// and
       /// returns a reference to it.
       /// </summary>
@@ -29,7 +29,7 @@ namespace xyLOGIX.Data.Iterators.Exceptions
       /// <summary>
       /// Constructs a new instance of
       /// <see
-      ///    cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" />
+      ///    cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" />
       /// and
       /// returns a reference to it.
       /// </summary>

@@ -1,23 +1,23 @@
-﻿using System;
-using xyLOGIX.Data.Iterators.Exceptions;
+using System;
+using xyLOGIX.Api.Data.Iterators.Exceptions;
 
-namespace xyLOGIX.Data.Iterators.Events
+namespace xyLOGIX.Api.Data.Iterators.Events
 {
    /// <summary>
    /// Defines the data that is passed by all events of type
-   /// <see cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventHandler" />.
+   /// <see cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventHandler" />.
    /// </summary>
    public class IterationErrorEventArgs : EventArgs
    {
       /// <summary>
       /// Creates a new instance of
       /// <see
-      ///    cref="T:xyLOGIX.Data.Iterators.Events.IterationErrorEventArgs" />
+      ///    cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs" />
       /// and
       /// returns a reference to it.
       /// </summary>
       /// <param name="exception">
-      /// (Required.) A <see cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" /> that describes the error.
+      /// (Required.) A <see cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" /> that describes the error.
       /// </param>
       /// <exception cref="T:System.ArgumentNullException">
       /// Thrown if the required parameter, <paramref name="exception" />, is
@@ -30,7 +30,7 @@ namespace xyLOGIX.Data.Iterators.Events
       }
 
       /// <summary>
-      /// Gets a reference to a <see cref="T:xyLOGIX.Data.Iterators.Exceptions.IteratorException" /> that contains
+      /// Gets a reference to a <see cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" /> that contains
       /// the error information.
       /// </summary>
       public IteratorException Exception { get; }
