@@ -26,9 +26,14 @@ namespace xyLOGIX.Api.Data.Iterators
         /// and returns a
         /// reference to it.
         /// </summary>
-        protected IteratorBase()
+        /// <param name="pageSize">
+        /// (Optional.) Integer value specifying the number of items to be
+        /// retrieved every time that the iterator is advanced.
+        /// </param>
+        protected IteratorBase(int pageSize = 1)
         {
             IsLastPage = false;
+            PageSize = pageSize;
         }
 
         /// <summary>
@@ -78,9 +83,19 @@ namespace xyLOGIX.Api.Data.Iterators
             => Current;
 
         /// <summary>
+        /// Gets the number of elements to be retrieved each time that we
+        /// advance to another page.
+        /// </summary>
+        public int PageSize { get; set; }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing,
         /// releasing, or resetting unmanaged resources.
         /// </summary>
+        /// <remarks>
+        /// For the task of consuming a paged API result to minimize network
+        /// traffic, this method is meaningless.
+        /// </remarks>
         public void Dispose() { }
 
         /// <summary>
@@ -196,8 +211,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// <exception cref="T:System.InvalidOperationException">
         /// The collection was modified after the enumerator was created.
         /// </exception>
-        public void Reset()
-            => throw new NotImplementedException();
+        public abstract void Reset();
 
         /// <summary>
         /// Caches excess items in a collection retrieved from the data source
@@ -224,6 +238,14 @@ namespace xyLOGIX.Api.Data.Iterators
             foreach (var item in excessItemArray)
                 ExcessItemCache.Push(item);
         }
+
+        /// <summary>
+        /// Retrieves the current page of results from the REST API.
+        /// </summary>
+        /// <param name="pageSize">
+        /// (Optional.) Integer specifying the number of elements to be retrieved.
+        /// </param>
+        protected abstract void GetCurrentPage(int pageSize = 1);
 
         /// <summary>
         /// Raises the
