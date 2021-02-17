@@ -13,7 +13,7 @@ namespace xyLOGIX.Api.Data.Iterators.Interfaces
    /// <typeparam name="T">
    /// Name of a class that represents a single element of the collection.
    /// </typeparam>
-   public interface IIterator<T> : IEnumerator<T> where T : class
+   public interface IIterator<out T> : IEnumerator<T> where T : class
    {
       /// <summary>
       /// Occurs when an exception is thrown during the iteration process.
