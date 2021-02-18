@@ -9,10 +9,8 @@ using xyLOGIX.Api.Data.Iterators.Interfaces;
 namespace xyLOGIX.Api.Data.Iterators
 {
     /// <summary>
-    /// Implements the
-    /// <see
-    ///     cref="T:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator" />
-    /// interface for
+    /// Implements the <see
+    /// cref="T:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator"/> interface for
     /// all objects that provide differing behaviors of the iteration process.
     /// </summary>
     /// <typeparam name="T">
@@ -20,10 +18,8 @@ namespace xyLOGIX.Api.Data.Iterators
     public abstract class IteratorBase<T> : IIterator<T> where T : class
     {
         /// <summary>
-        /// Constructs a new instance of
-        /// <see
-        ///     cref="T:xyLOGIX.Api.Data.Iterators.IteratorBase" />
-        /// and returns a
+        /// Constructs a new instance of <see
+        /// cref="T:xyLOGIX.Api.Data.Iterators.IteratorBase"/> and returns a
         /// reference to it.
         /// </summary>
         /// <param name="pageSize">
@@ -35,19 +31,6 @@ namespace xyLOGIX.Api.Data.Iterators
             IsLastPage = false;
             PageSize = pageSize;
         }
-
-        /// <summary>
-        /// Gets a reference to a cache of items obtained that are in excess of
-        /// what is requested, but which still need to be provided to users of
-        /// this object.
-        /// </summary>
-        protected Stack<T> ExcessItemCache { get; } = new Stack<T>();
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the last page of paginated
-        /// data has been read from the data source.
-        /// </summary>
-        protected bool IsLastPage { get; set; }
 
         /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
@@ -89,6 +72,19 @@ namespace xyLOGIX.Api.Data.Iterators
         public int PageSize { get; set; }
 
         /// <summary>
+        /// Gets a reference to a cache of items obtained that are in excess of
+        /// what is requested, but which still need to be provided to users of
+        /// this object.
+        /// </summary>
+        protected Stack<T> ExcessItemCache { get; } = new Stack<T>();
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the last page of paginated
+        /// data has been read from the data source.
+        /// </summary>
+        protected bool IsLastPage { get; set; }
+
+        /// <summary>
         /// Performs application-defined tasks associated with freeing,
         /// releasing, or resetting unmanaged resources.
         /// </summary>
@@ -104,21 +100,18 @@ namespace xyLOGIX.Api.Data.Iterators
         /// </summary>
         /// <returns>
         /// Reference to an instance of a collection object that implements the
-        /// <see cref="T:System.Collections.Generic.IEnumerable{T}" /> interface.
+        /// <see cref="T:System.Collections.Generic.IEnumerable{T}"/> interface.
         /// This contains all the elements of the entire data set.
         /// </returns>
         /// <remarks>
-        /// Implementations should generally call the
-        /// <see
-        ///     cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext" />
-        /// and
-        /// <see
-        ///     cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext" />
+        /// Implementations should generally call the <see
+        /// cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext"/>
+        /// and <see
+        /// cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext"/>
         /// methods in order to obtain all the elements.
-        /// <para />
-        /// This method raises the
-        /// <see
-        ///     cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError" />
+        /// <para/>
+        /// This method raises the <see
+        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError"/>
         /// event if an exception gets raised during the iteration process. In
         /// this case, this method then returns the empty enumerable.
         /// </remarks>
@@ -158,7 +151,7 @@ namespace xyLOGIX.Api.Data.Iterators
         }
 
         /// <summary>
-        /// Returns a reference to an instance of <typeparamref name="T" /> that
+        /// Returns a reference to an instance of <typeparamref name="T"/> that
         /// is the current item in the data set that the iterator is now
         /// pointing to.
         /// </summary>
@@ -166,7 +159,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Name of the class that represents a single element of the data set.
         /// </typeparam>
         /// <returns>
-        /// Reference to the instance of <typeparamref name="T" /> that
+        /// Reference to the instance of <typeparamref name="T"/> that
         /// represents the current element in the iteration, or <c>null</c> if
         /// the end of the collection has been passed.
         /// </returns>
@@ -174,9 +167,8 @@ namespace xyLOGIX.Api.Data.Iterators
         /// This method returns a reference to the current element of the data
         /// set. When called, this method will automatically advance the
         /// current-item pointer to the next element in the list.
-        /// <para />
-        /// NOTE: Even if
-        /// <see cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext" />
+        /// <para/>
+        /// NOTE: Even if <see cref="M:xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext"/>
         /// returns <c>false</c>, this method will still return a non-
         /// <c>null</c> value.
         /// </remarks>
@@ -194,8 +186,8 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Advances the enumerator to the next element of the collection.
         /// </summary>
         /// <returns>
-        /// <see langword="true" /> if the enumerator was successfully advanced
-        /// to the next element; <see langword="false" /> if the enumerator has
+        /// <see langword="true"/> if the enumerator was successfully advanced
+        /// to the next element; <see langword="false"/> if the enumerator has
         /// passed the end of the collection.
         /// </returns>
         /// <exception cref="T:System.InvalidOperationException">
@@ -218,7 +210,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// that we are iterating over.
         /// </summary>
         /// <param name="excessItems">
-        /// Collection of references to instances of <typeparamref name="T" />
+        /// Collection of references to instances of <typeparamref name="T"/>
         /// that need to be cached.
         /// </param>
         /// <remarks>
@@ -248,34 +240,27 @@ namespace xyLOGIX.Api.Data.Iterators
         protected abstract void GetCurrentPage(int pageSize = 1);
 
         /// <summary>
-        /// Raises the
-        /// <see
-        ///     cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError" />
-        /// event.
+        /// Raises the <see
+        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError"/> event.
         /// </summary>
         /// <param name="e">
-        /// A
-        /// <see
-        ///     cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs" />
+        /// A <see
+        /// cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs"/>
         /// that contains the event data.
         /// </param>
         protected virtual void OnIterationError(IterationErrorEventArgs e)
             => IterationError?.Invoke(this, e);
 
         /// <summary>
-        /// Raises the
-        /// <see
-        ///     cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.LastItemReached" />
-        /// event.
+        /// Raises the <see
+        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.LastItemReached"/> event.
         /// </summary>
         protected virtual void OnLastItemReached()
             => LastItemReached?.Invoke(this, EventArgs.Empty);
 
         /// <summary>
-        /// Raises the
-        /// <see
-        ///     cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.NoItemsFound" />
-        /// event.
+        /// Raises the <see
+        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.NoItemsFound"/> event.
         /// </summary>
         protected virtual void OnNoItemsFound()
             => NoItemsFound?.Invoke(this, EventArgs.Empty);
