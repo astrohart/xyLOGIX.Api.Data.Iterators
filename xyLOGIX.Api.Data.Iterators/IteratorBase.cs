@@ -35,7 +35,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
         /// </summary>
-        public event IterationErrorEventHandler IterationError;
+        public event IteratorErrorEventHandler IteratorError;
 
         /// <summary>
         /// Occurs when the end of the collection has been reached.
@@ -134,8 +134,8 @@ namespace xyLOGIX.Api.Data.Iterators
             }
             catch (Exception ex)
             {
-                OnIterationError(
-                    new IterationErrorEventArgs(
+                OnIteratorError(
+                    new IteratorErrorEventArgs(
                         new IteratorException(
                             "A problem was occurred during the iteration operation.",
                             ex
@@ -241,15 +241,15 @@ namespace xyLOGIX.Api.Data.Iterators
 
         /// <summary>
         /// Raises the <see
-        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError"/> event.
+        /// cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.IteratorError"/> event.
         /// </summary>
         /// <param name="e">
         /// A <see
-        /// cref="T:xyLOGIX.Api.Data.Iterators.Events.IterationErrorEventArgs"/>
+        /// cref="T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs"/>
         /// that contains the event data.
         /// </param>
-        protected virtual void OnIterationError(IterationErrorEventArgs e)
-            => IterationError?.Invoke(this, e);
+        protected virtual void OnIteratorError(IteratorErrorEventArgs e)
+            => IteratorError?.Invoke(this, e);
 
         /// <summary>
         /// Raises the <see
