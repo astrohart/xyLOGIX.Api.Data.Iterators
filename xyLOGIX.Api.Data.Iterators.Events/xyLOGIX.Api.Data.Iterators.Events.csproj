@@ -87,10 +87,17 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+    <ProjectReference Include="..\..\PortfolioMonitor\PortfolioMonitor.PriceGetters\PortfolioMonitor.PriceGetters.csproj">
       <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>PortfolioMonitor.PriceGetters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+      <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

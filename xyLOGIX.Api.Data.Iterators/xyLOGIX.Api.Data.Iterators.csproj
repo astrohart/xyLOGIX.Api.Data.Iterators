@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -90,14 +90,21 @@
       <Project>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Events</Name>
     </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+    <ProjectReference Include="..\..\PortfolioMonitor\PortfolioMonitor.PriceGetters\PortfolioMonitor.PriceGetters.csproj">
       <Project>{84C1F71A-AAA4-4A08-9728-19E710965E4D}</Project>
+      <Name>PortfolioMonitor.PriceGetters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
+      <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
     </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Interfaces\xyLOGIX.Api.Data.Iterators.Interfaces.csproj">
       <Project>{6C7EC464-BCD6-43A7-A147-984E404F43FD}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Interfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
