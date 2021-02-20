@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -86,6 +86,10 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\xyLOGIX.Api.Data.Repositories\xyLOGIX.Api.Data.Repositories.Events\xyLOGIX.Api.Data.Repositories.Events.csproj">
+      <Project>{62A5D5AD-D1EB-4D6D-8BA0-45236693D3ED}</Project>
+      <Name>xyLOGIX.Api.Data.Repositories.Events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Events\xyLOGIX.Api.Data.Iterators.Events.csproj">
       <Project>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Events</Name>

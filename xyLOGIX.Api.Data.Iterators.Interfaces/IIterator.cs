@@ -5,7 +5,7 @@ using xyLOGIX.Api.Data.Iterators.Events;
 namespace xyLOGIX.Api.Data.Iterators.Interfaces
 {
     /// <summary>
-    /// Defines the public-exposed methods and properties of an object that
+    /// Defines the publicly-exposed methods and properties of an object that
     /// iterates over a data set whose total number of items is not known in
     /// advance. Each data item is referenced as an instance of <typeparamref name="T"/>.
     /// </summary>
@@ -17,7 +17,7 @@ namespace xyLOGIX.Api.Data.Iterators.Interfaces
         /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
         /// </summary>
-        event IterationErrorEventHandler IterationError;
+        event IteratorErrorEventHandler IteratorError;
 
         /// <summary>
         /// Occurs when the end of the collection has been reached.
