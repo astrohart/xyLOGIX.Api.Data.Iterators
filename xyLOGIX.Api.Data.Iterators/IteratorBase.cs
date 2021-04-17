@@ -155,9 +155,6 @@ namespace xyLOGIX.Api.Data.Iterators
         /// is the current item in the data set that the iterator is now
         /// pointing to.
         /// </summary>
-        /// <typeparam name="T">
-        /// Name of the class that represents a single element of the data set.
-        /// </typeparam>
         /// <returns>
         /// Reference to the instance of <typeparamref name="T"/> that
         /// represents the current element in the iteration, or <c>null</c> if
