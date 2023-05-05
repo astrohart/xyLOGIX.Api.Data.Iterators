@@ -34,21 +34,26 @@ xyLOGIX.Api.Data.Iterators
 
 ##### Summary
 
-Implements the [IIterator](#T-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator') interface for
+Implements the
+[IIterator](#T-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator')
+interface for
 all objects that provide differing behaviors of the iteration process.
 
 ##### Generic Types
 
 | Name | Description |
 | ---- | ----------- |
-| T |  |
+| T | Name of the type that represents a POCO that should be returned, that is
+initialized with the values for each element in the collection. |
 
 <a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-#ctor-System-Int32-'></a>
 ### #ctor(pageSize) `constructor`
 
 ##### Summary
 
-Constructs a new instance of [IteratorBase](#T-xyLOGIX-Api-Data-Iterators-IteratorBase 'xyLOGIX.Api.Data.Iterators.IteratorBase') and returns a
+Constructs a new instance of
+[IteratorBase](#T-xyLOGIX-Api-Data-Iterators-IteratorBase 'xyLOGIX.Api.Data.Iterators.IteratorBase')
+and returns a
 reference to it.
 
 ##### Parameters
@@ -162,13 +167,16 @@ This method has no parameters.
 
 ##### Remarks
 
-Implementations should generally call the [GetNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-GetNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext')
-and [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
+Implementations should generally call the
+[GetNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-GetNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext')
+and
+[HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
 methods in order to obtain all the elements.
 
 
 
-This method raises the [](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-IterationError 'xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError')
+This method raises the
+[](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-IterationError 'xyLOGIX.Api.Data.Iterators.IteratorBase.IterationError')
 event if an exception gets raised during the iteration process. In
 this case, this method then returns the empty enumerable.
 
@@ -212,7 +220,8 @@ current-item pointer to the next element in the list.
 
 
 
-NOTE: Even if [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
+NOTE: Even if
+[HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
 returns `false`, this method will still return a non-
 `null` value.
 
@@ -259,13 +268,16 @@ This method has no parameters.
 
 ##### Summary
 
-Raises the [](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-IteratorError 'xyLOGIX.Api.Data.Iterators.IteratorBase.IteratorError') event.
+Raises the
+[](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-IteratorError 'xyLOGIX.Api.Data.Iterators.IteratorBase.IteratorError')
+event.
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| e | [xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs') | A [IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs')
+| e | [xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs') | A
+[IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs')
 that contains the event data. |
 
 <a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-OnLastItemReached'></a>
@@ -273,7 +285,9 @@ that contains the event data. |
 
 ##### Summary
 
-Raises the [](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-LastItemReached 'xyLOGIX.Api.Data.Iterators.IteratorBase.LastItemReached') event.
+Raises the
+[](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-LastItemReached 'xyLOGIX.Api.Data.Iterators.IteratorBase.LastItemReached')
+event.
 
 ##### Parameters
 
@@ -284,7 +298,9 @@ This method has no parameters.
 
 ##### Summary
 
-Raises the [](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-NoItemsFound 'xyLOGIX.Api.Data.Iterators.IteratorBase.NoItemsFound') event.
+Raises the
+[](#E-xyLOGIX-Api-Data-Iterators-IteratorBase-NoItemsFound 'xyLOGIX.Api.Data.Iterators.IteratorBase.NoItemsFound')
+event.
 
 ##### Parameters
 
