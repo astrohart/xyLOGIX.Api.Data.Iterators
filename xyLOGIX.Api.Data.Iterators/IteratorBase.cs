@@ -5,6 +5,7 @@ using System.Linq;
 using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Iterators.Interfaces;
+using xyLOGIX.Core.Debug;
 
 namespace xyLOGIX.Api.Data.Iterators
 {
@@ -39,34 +40,6 @@ namespace xyLOGIX.Api.Data.Iterators
         }
 
         /// <summary>
-        /// Gets a reference to a cache of items obtained that are in excess of
-        /// what is requested, but which still need to be provided to users of
-        /// this object.
-        /// </summary>
-        protected Stack<T> ExcessItemCache { get; } = new Stack<T>();
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the last page of paginated
-        /// data has been read from the data source.
-        /// </summary>
-        protected bool IsLastPage { get; set; }
-
-        /// <summary>
-        /// Occurs when an exception is thrown during the iteration process.
-        /// </summary>
-        public event IteratorErrorEventHandler IteratorError;
-
-        /// <summary>
-        /// Occurs when the end of the collection has been reached.
-        /// </summary>
-        public event EventHandler LastItemReached;
-
-        /// <summary>
-        /// Occurs when no items have been found in the underlying collection.
-        /// </summary>
-        public event EventHandler NoItemsFound;
-
-        /// <summary>
         /// Gets the element in the collection at the current position of the enumerator.
         /// </summary>
         /// <returns>
@@ -85,10 +58,38 @@ namespace xyLOGIX.Api.Data.Iterators
             => Current;
 
         /// <summary>
+        /// Gets a reference to a cache of items obtained that are in excess of
+        /// what is requested, but which still need to be provided to users of
+        /// this object.
+        /// </summary>
+        protected Stack<T> ExcessItemCache { get; } = new Stack<T>();
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the last page of paginated
+        /// data has been read from the data source.
+        /// </summary>
+        protected bool IsLastPage { get; set; }
+
+        /// <summary>
         /// Gets the number of elements to be retrieved each time that we
         /// advance to another page.
         /// </summary>
         public int PageSize { get; set; }
+
+        /// <summary>
+        /// Occurs when an exception is thrown during the iteration process.
+        /// </summary>
+        public event IteratorErrorEventHandler IteratorError;
+
+        /// <summary>
+        /// Occurs when the end of the collection has been reached.
+        /// </summary>
+        public event EventHandler LastItemReached;
+
+        /// <summary>
+        /// Occurs when no items have been found in the underlying collection.
+        /// </summary>
+        public event EventHandler NoItemsFound;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing,
@@ -226,16 +227,36 @@ namespace xyLOGIX.Api.Data.Iterators
         /// </remarks>
         protected virtual void CacheExcess(IEnumerable<T> excessItems)
         {
-            var excessItemArray = excessItems as T[] ?? excessItems.ToArray();
-            if (!excessItemArray.Any()) // nothing to do
-                return;
+            try
+            {
+                var excessItemArray =
+                    excessItems as T[] ?? excessItems.ToArray();
+                if (!excessItemArray.Any()) // nothing to do
+                    return;
 
-            // If we are here, then there are excess items, over and above the
-            // single "current item" that this iterator step through. In that
-            // event, push all the excess items on to the Excess Item Cache stack.
+                // If we are here, then there are excess items, over and above the
+                // single "current item" that this iterator step through. In that
+                // event, push all the excess items on to the Excess Item Cache stack.
+                //
+                // MOTE: We do not want to double-insert items, as that would consume
+                // lots of additional memory.  Instead, we will only push an item into
+                // the excess item cache if it does not already exist on the stack.
 
-            foreach (var item in excessItemArray)
-                ExcessItemCache.Push(item);
+                // If the set of items to be added is itself identical to the
+                // entire stack, then do nothing.  Let's not even waste the cycles
+                // iterating over the input list, is this is the case.
+
+                if (excessItemArray.SequenceEqual(ExcessItemCache)) return;
+
+                foreach (var item in excessItemArray)
+                    if (!ExcessItemCache.Contains(item))
+                        ExcessItemCache.Push(item);
+            }
+            catch (Exception ex)
+            {
+                // dump all the exception info to the log
+                DebugUtils.LogException(ex);
+            }
         }
 
         /// <summary>
