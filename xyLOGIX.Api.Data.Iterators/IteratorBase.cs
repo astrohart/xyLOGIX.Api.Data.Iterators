@@ -77,6 +77,17 @@ namespace xyLOGIX.Api.Data.Iterators
         public int PageSize { get; set; }
 
         /// <summary>
+        /// Gets or sets a <see cref="T:System.String" /> or other key that is used to look
+        /// up order account history items and/or transactions for a specific asset, wallet, or
+        /// account history.
+        /// </summary>
+        /// <remarks>
+        /// This property is of <c>dynamic</c> type since the type of filter data
+        /// is platform-specific.
+        /// </remarks>
+        public dynamic Filter { get; set; }
+
+        /// <summary>
         /// Occurs when an exception is thrown during the iteration process.
         /// </summary>
         public event IteratorErrorEventHandler IteratorError;
