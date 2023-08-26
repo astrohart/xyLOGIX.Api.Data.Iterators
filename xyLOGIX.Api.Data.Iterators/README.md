@@ -7,6 +7,7 @@
   - [#ctor(pageSize)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-#ctor-System-Int32- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.#ctor(System.Int32)')
   - [Current](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Current 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.Current')
   - [ExcessItemCache](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-ExcessItemCache 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.ExcessItemCache')
+  - [Filter](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Filter 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.Filter')
   - [IsLastPage](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsLastPage 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.IsLastPage')
   - [PageSize](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-PageSize 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.PageSize')
   - [System#Collections#IEnumerator#Current](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-System#Collections#IEnumerator#Current 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.System#Collections#IEnumerator#Current')
@@ -82,6 +83,20 @@ The element in the collection at the current position of the enumerator.
 Gets a reference to a cache of items obtained that are in excess of
 what is requested, but which still need to be provided to users of
 this object.
+
+<a name='P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Filter'></a>
+### Filter `property`
+
+##### Summary
+
+Gets or sets a [String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') or other key that is used to look
+up order account history items and/or transactions for a specific asset, wallet, or
+account history.
+
+##### Remarks
+
+This property is of `dynamic` type since the type of filter data
+is platform-specific.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsLastPage'></a>
 ### IsLastPage `property`
