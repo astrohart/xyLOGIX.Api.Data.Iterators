@@ -1,4 +1,4 @@
-﻿<a name='assembly'></a>
+<a name='assembly'></a>
 # xyLOGIX.Api.Data.Iterators.Exceptions
 
 ## Contents
@@ -26,25 +26,21 @@ Represents an exception thrown by an iterator object.
 
 ##### Summary
 
-Constructs a new instance of [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException')
-and returns a reference to it.
+Constructs a new instance of [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') and returns a reference to it.
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | message | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | The error message that explains the reason for the exception. |
-| innerException | [System.Exception](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Exception 'System.Exception') | The exception that is the cause of the current exception, or a null
-reference ( `Nothing` in Visual Basic) if no inner
-exception is specified. |
+| innerException | [System.Exception](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Exception 'System.Exception') | The exception that is the cause of the current exception, or a null reference ( `Nothing` in Visual Basic) if no inner exception is specified. |
 
 <a name='M-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException-#ctor-System-String-'></a>
 ### #ctor(message) `constructor`
 
 ##### Summary
 
-Constructs a new instance of [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException')
-and returns a reference to it.
+Constructs a new instance of [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') and returns a reference to it.
 
 ##### Parameters
 
@@ -68,8 +64,7 @@ A strongly-typed resource class, for looking up localized strings, etc.
 
 ##### Summary
 
-Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
+Overrides the current thread's CurrentUICulture property for all resource lookups using this strongly typed resource class.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-Exceptions-Properties-Resources-ResourceManager'></a>
 ### ResourceManager `property`
