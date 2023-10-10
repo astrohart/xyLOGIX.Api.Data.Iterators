@@ -1,4 +1,4 @@
-﻿<a name='assembly'></a>
+<a name='assembly'></a>
 # xyLOGIX.Api.Data.Iterators.Interfaces
 
 ## Contents
@@ -21,9 +21,7 @@ xyLOGIX.Api.Data.Iterators.Interfaces
 
 ##### Summary
 
-Defines the publicly-exposed methods and properties of an object that
-iterates over a data set whose total number of items is not known in
-advance. Each data item is referenced as an instance of `T`.
+Defines the publicly-exposed methods and properties of an object that iterates over a data set whose total number of items is not known in advance. Each data item is referenced as an instance of `T`.
 
 ##### Generic Types
 
@@ -36,22 +34,18 @@ advance. Each data item is referenced as an instance of `T`.
 
 ##### Summary
 
-Gets the number of elements to be retrieved each time that we
-advance to another page.
+Gets the number of elements to be retrieved each time that we advance to another page.
 
 <a name='M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator`1-GetAll'></a>
 ### GetAll() `method`
 
 ##### Summary
 
-Gets the entire collection and returns an enumerator to be used to
-iterate over it.
+Gets the entire collection and returns an enumerator to be used to iterate over it.
 
 ##### Returns
 
-Reference to an instance of a collection object that implements the
-[IEnumerable{T}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{T}') interface.
-This contains all the elements of the entire data set.
+Reference to an instance of a collection object that implements the [IEnumerable{T}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IEnumerable 'System.Collections.Generic.IEnumerable{T}') interface. This contains all the elements of the entire data set.
 
 ##### Parameters
 
@@ -59,24 +53,18 @@ This method has no parameters.
 
 ##### Remarks
 
-Implementations should generally call the [GetNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-GetNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext')
-and [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
-methods in order to obtain all the elements.
+Implementations should generally call the [GetNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-GetNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.GetNext') and [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext') methods in order to obtain all the elements.
 
 <a name='M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator`1-GetNext'></a>
 ### GetNext() `method`
 
 ##### Summary
 
-Returns a reference to an instance of `T` that
-is the current item in the data set that the iterator is now
-pointing to.
+Returns a reference to an instance of `T` that is the current item in the data set that the iterator is now pointing to.
 
 ##### Returns
 
-Reference to the instance of `T` that
-represents the current element in the iteration, or `null` if
-the end of the collection has been passed.
+Reference to the instance of `T` that represents the current element in the iteration, or `null` if the end of the collection has been passed.
 
 ##### Parameters
 
@@ -84,15 +72,11 @@ This method has no parameters.
 
 ##### Remarks
 
-This method returns a reference to the current element of the data
-set. When called, this method will automatically advance the
-current-item pointer to the next element in the list.
+This method returns a reference to the current element of the data set. When called, this method will automatically advance the current-item pointer to the next element in the list.
 
 
 
-NOTE: Even if [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext')
-returns `false`, this method will still return a non-
-`null` value.
+NOTE: Even if [HasNext](#M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator-HasNext 'xyLOGIX.Api.Data.Iterators.Interfaces.IIterator.HasNext') returns `false`, this method will still return a non- `null` value.
 
 <a name='M-xyLOGIX-Api-Data-Iterators-Interfaces-IIterator`1-HasNext'></a>
 ### HasNext() `method`
@@ -125,8 +109,7 @@ A strongly-typed resource class, for looking up localized strings, etc.
 
 ##### Summary
 
-Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
+Overrides the current thread's CurrentUICulture property for all resource lookups using this strongly typed resource class.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-Interfaces-Properties-Resources-ResourceManager'></a>
 ### ResourceManager `property`

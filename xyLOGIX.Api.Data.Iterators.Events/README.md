@@ -1,4 +1,4 @@
-﻿<a name='assembly'></a>
+<a name='assembly'></a>
 # xyLOGIX.Api.Data.Iterators.Events
 
 ## Contents
@@ -27,23 +27,20 @@ Provides information for IteratorError event handlers.
 
 ##### Summary
 
-Constructs a new instance of [IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs')
-and returns a reference to it.
+Constructs a new instance of [IteratorErrorEventArgs](#T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs 'xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs') and returns a reference to it.
 
 ##### Parameters
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| exception | [xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') | (Required.) A [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException')
-that provides more information about the error. |
+| exception | [xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') | (Required.) A [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') that provides more information about the error. |
 
 <a name='P-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs-Exception'></a>
 ### Exception `property`
 
 ##### Summary
 
-Gets a reference to the [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException')
-that provides more information about the error.
+Gets a reference to the [IteratorException](#T-xyLOGIX-Api-Data-Iterators-Exceptions-IteratorException 'xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException') that provides more information about the error.
 
 <a name='T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventHandler'></a>
 ## IteratorErrorEventHandler `type`
@@ -64,8 +61,7 @@ Represents a handler for a IteratorError event.
 
 ##### Remarks
 
-This delegate merely specifies the signature of all methods that handle
-the IteratorError event.
+This delegate merely specifies the signature of all methods that handle the IteratorError event.
 
 <a name='T-xyLOGIX-Api-Data-Iterators-Events-Properties-Resources'></a>
 ## Resources `type`
@@ -83,8 +79,7 @@ A strongly-typed resource class, for looking up localized strings, etc.
 
 ##### Summary
 
-Overrides the current thread's CurrentUICulture property for all
-  resource lookups using this strongly typed resource class.
+Overrides the current thread's CurrentUICulture property for all resource lookups using this strongly typed resource class.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-Events-Properties-Resources-ResourceManager'></a>
 ### ResourceManager `property`
