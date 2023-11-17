@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PostSharp.Patterns.Collections;
+using PostSharp.Patterns.Threading;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -6,7 +8,6 @@ using System.Linq;
 using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Iterators.Interfaces;
-using xyLOGIX.Collections.Synchronized;
 using xyLOGIX.Core.Debug;
 
 namespace xyLOGIX.Api.Data.Iterators
@@ -130,7 +131,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// </remarks>
         public IEnumerable<T> GetAll()
         {
-            var result = new ConcurrentList<T>();
+            var result = new AdvisableCollection<T>();
 
             IsLastPage = false;
 
@@ -157,7 +158,7 @@ namespace xyLOGIX.Api.Data.Iterators
                 );
 
                 // in the event an exception occurred, just return the empty list
-                result = new ConcurrentList<T>();
+                result = new AdvisableCollection<T>();
             }
 
             return result;
@@ -272,6 +273,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// <see cref="T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs" /> that
         /// contains the event data.
         /// </param>
+        [Yielder]
         protected virtual void OnIteratorError(IteratorErrorEventArgs e)
             => IteratorError?.Invoke(this, e);
 
@@ -279,6 +281,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Raises the
         /// <see cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.LastItemReached" /> event.
         /// </summary>
+        [Yielder]
         protected virtual void OnLastItemReached()
             => LastItemReached?.Invoke(this, EventArgs.Empty);
 
@@ -286,6 +289,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Raises the
         /// <see cref="E:xyLOGIX.Api.Data.Iterators.IteratorBase.NoItemsFound" /> event.
         /// </summary>
+        [Yielder]
         protected virtual void OnNoItemsFound()
             => NoItemsFound?.Invoke(this, EventArgs.Empty);
     }
