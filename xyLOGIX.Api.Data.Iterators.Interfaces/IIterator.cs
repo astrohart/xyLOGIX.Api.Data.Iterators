@@ -14,7 +14,7 @@ namespace xyLOGIX.Api.Data.Iterators.Interfaces
     /// Name of a class that represents a single element of the
     /// collection.
     /// </typeparam>
-    [Actor]
+    [Synchronized]
     public interface IIterator<T> : IEnumerator<T> where T : class
     {
         /// <summary>

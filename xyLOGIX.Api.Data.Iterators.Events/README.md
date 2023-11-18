@@ -57,11 +57,13 @@ Represents a handler for a IteratorError event.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| sender | [T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventHandler](#T-T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventHandler 'T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventHandler') | Reference to the instance of the object that raised the event. |
+| sender | [T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventHandler](#T-T-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventHandler 'T:xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventHandler') | Reference to the instance of the object that raised the
+event. |
 
 ##### Remarks
 
-This delegate merely specifies the signature of all methods that handle the IteratorError event.
+This delegate merely specifies the signature of all methods that
+handle the IteratorError event.
 
 <a name='T-xyLOGIX-Api-Data-Iterators-Events-Properties-Resources'></a>
 ## Resources `type`
