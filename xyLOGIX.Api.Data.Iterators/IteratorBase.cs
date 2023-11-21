@@ -1,4 +1,6 @@
 ﻿using PostSharp.Patterns.Collections;
+using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections;
@@ -25,6 +27,17 @@ namespace xyLOGIX.Api.Data.Iterators
     public abstract class IteratorBase<T> : IIterator<T> where T : class
     {
         /// <summary>
+        /// Initializes static data or performs actions that need to be performed once only
+        /// for the <see cref="T:xyLOGIX.Api.Data.Iterators.IteratorBase" /> class.
+        /// </summary>
+        /// <remarks>
+        /// This constructor is called automatically prior to the first instance being
+        /// created or before any static members are referenced.
+        /// </remarks>
+        [Log(AttributeExclude = true)]
+        static IteratorBase() { }
+
+        /// <summary>
         /// Constructs a new instance of
         /// <see cref="T:xyLOGIX.Api.Data.Iterators.IteratorBase" /> and returns a
         /// reference to it.
@@ -33,6 +46,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// (Optional.) Integer value specifying the number of
         /// items to be retrieved every time that the iterator is advanced.
         /// </param>
+        [Log(AttributeExclude = true)]
         protected IteratorBase(int pageSize = 1)
         {
             IsLastPage = false;
@@ -65,7 +79,9 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Gets a reference to a cache of items obtained that are in excess of
         /// what is requested, but which still need to be provided to users of this object.
         /// </summary>
-        protected ConcurrentStack<T> ExcessItemCache { get; } = new ConcurrentStack<T>();
+        [Child]
+        protected ConcurrentStack<T> ExcessItemCache { get; } =
+            new ConcurrentStack<T>();
 
         /// <summary>
         /// Gets or sets a <see cref="T:System.String" /> or other key that is
@@ -223,13 +239,14 @@ namespace xyLOGIX.Api.Data.Iterators
         /// When overriding this method, implementers must start by calling the
         /// base class.
         /// </remarks>
-        protected virtual void CacheExcess(IList<T> excessItems)
+        [EntryPoint]
+        protected virtual void CacheExcess(ICollection<T> excessItems)
         {
             try
             {
                 var excessItemArray =
                     excessItems as T[] ?? excessItems.ToArray();
-                if (!excessItemArray.Any()) // nothing to do
+                if (excessItemArray.Length == 0) // nothing to do
                     return;
 
                 // If we are here, then there are excess items, over and above the
@@ -262,6 +279,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// (Optional.) Integer specifying the number of elements
         /// to be retrieved.
         /// </param>
+        [EntryPoint]
         protected abstract void GetCurrentPage(int pageSize = 1);
 
         /// <summary>

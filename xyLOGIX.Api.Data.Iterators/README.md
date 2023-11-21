@@ -11,7 +11,8 @@
   - [IsLastPage](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsLastPage 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.IsLastPage')
   - [PageSize](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-PageSize 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.PageSize')
   - [System#Collections#IEnumerator#Current](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-System#Collections#IEnumerator#Current 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.System#Collections#IEnumerator#Current')
-  - [CacheExcess(excessItems)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CacheExcess-System-Collections-Generic-IList{`0}- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.CacheExcess(System.Collections.Generic.IList{`0})')
+  - [#cctor()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-#cctor 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.#cctor')
+  - [CacheExcess(excessItems)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CacheExcess-System-Collections-Generic-ICollection{`0}- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.CacheExcess(System.Collections.Generic.ICollection{`0})')
   - [Dispose()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Dispose 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.Dispose')
   - [GetAll()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-GetAll 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.GetAll')
   - [GetCurrentPage(pageSize)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-GetCurrentPage-System-Int32- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.GetCurrentPage(System.Int32)')
@@ -127,7 +128,24 @@ enumerator.
 The element in the collection at the current position of the
 enumerator.
 
-<a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CacheExcess-System-Collections-Generic-IList{`0}-'></a>
+<a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-#cctor'></a>
+### #cctor() `method`
+
+##### Summary
+
+Initializes static data or performs actions that need to be performed once only
+for the [IteratorBase](#T-xyLOGIX-Api-Data-Iterators-IteratorBase 'xyLOGIX.Api.Data.Iterators.IteratorBase') class.
+
+##### Parameters
+
+This method has no parameters.
+
+##### Remarks
+
+This constructor is called automatically prior to the first instance being
+created or before any static members are referenced.
+
+<a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CacheExcess-System-Collections-Generic-ICollection{`0}-'></a>
 ### CacheExcess(excessItems) `method`
 
 ##### Summary
@@ -139,7 +157,7 @@ that we are iterating over.
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| excessItems | [System.Collections.Generic.IList{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.IList 'System.Collections.Generic.IList{`0}') | Collection of references to instances of
+| excessItems | [System.Collections.Generic.ICollection{\`0}](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Generic.ICollection 'System.Collections.Generic.ICollection{`0}') | Collection of references to instances of
 `T` that need to be cached. |
 
 ##### Remarks
