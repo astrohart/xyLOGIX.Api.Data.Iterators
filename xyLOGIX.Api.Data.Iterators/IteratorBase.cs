@@ -4,12 +4,12 @@ using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using xyLOGIX.Api.Data.Iterators.Events;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 using xyLOGIX.Api.Data.Iterators.Interfaces;
+using xyLOGIX.Collections.Synchronized;
 using xyLOGIX.Core.Debug;
 
 namespace xyLOGIX.Api.Data.Iterators
@@ -53,6 +53,15 @@ namespace xyLOGIX.Api.Data.Iterators
             PageSize = pageSize;
         }
 
+        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
+        public event IteratorErrorEventHandler IteratorError;
+
+        /// <summary> Occurs when the end of the collection has been reached. </summary>
+        public event EventHandler LastItemReached;
+
+        /// <summary> Occurs when no items have been found in the underlying collection. </summary>
+        public event EventHandler NoItemsFound;
+
         /// <summary>
         /// Gets the element in the collection at the current position of the
         /// enumerator.
@@ -76,14 +85,6 @@ namespace xyLOGIX.Api.Data.Iterators
             => Current;
 
         /// <summary>
-        /// Gets a reference to a cache of items obtained that are in excess of
-        /// what is requested, but which still need to be provided to users of this object.
-        /// </summary>
-        [Child]
-        protected ConcurrentStack<T> ExcessItemCache { get; } =
-            new ConcurrentStack<T>();
-
-        /// <summary>
         /// Gets or sets a <see cref="T:System.String" /> or other key that is
         /// used to look up order account history items and/or transactions for a specific
         /// asset, wallet, or account history.
@@ -95,25 +96,24 @@ namespace xyLOGIX.Api.Data.Iterators
         public dynamic Filter { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the last page of paginated
-        /// data has been read from the data source.
-        /// </summary>
-        protected bool IsLastPage { get; set; }
-
-        /// <summary>
         /// Gets the number of elements to be retrieved each time that we advance
         /// to another page.
         /// </summary>
         public int PageSize { get; set; }
 
-        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
-        public event IteratorErrorEventHandler IteratorError;
+        /// <summary>
+        /// Gets a reference to a cache of items obtained that are in excess of
+        /// what is requested, but which still need to be provided to users of this object.
+        /// </summary>
+        [Child]
+        protected AdvisableStack<T> ExcessItemCache { get; } =
+            new AdvisableStack<T>();
 
-        /// <summary> Occurs when the end of the collection has been reached. </summary>
-        public event EventHandler LastItemReached;
-
-        /// <summary> Occurs when no items have been found in the underlying collection. </summary>
-        public event EventHandler NoItemsFound;
+        /// <summary>
+        /// Gets or sets a value indicating whether the last page of paginated
+        /// data has been read from the data source.
+        /// </summary>
+        protected bool IsLastPage { get; set; }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing,
@@ -123,7 +123,8 @@ namespace xyLOGIX.Api.Data.Iterators
         /// For the task of consuming a paged API result to minimize network
         /// traffic, this method is meaningless.
         /// </remarks>
-        public void Dispose() { }
+        public void Dispose()
+        { }
 
         /// <summary>
         /// Gets the entire collection and returns an enumerator to be used to
