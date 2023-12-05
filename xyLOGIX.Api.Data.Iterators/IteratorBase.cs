@@ -1,6 +1,5 @@
 using PostSharp.Patterns.Collections;
 using PostSharp.Patterns.Diagnostics;
-using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections;
@@ -54,15 +53,12 @@ namespace xyLOGIX.Api.Data.Iterators
         }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
-        [WeakEvent]
         public event IteratorErrorEventHandler IteratorError;
 
         /// <summary> Occurs when the end of the collection has been reached. </summary>
-        [WeakEvent]
         public event EventHandler LastItemReached;
 
         /// <summary> Occurs when no items have been found in the underlying collection. </summary>
-        [WeakEvent]
         public event EventHandler NoItemsFound;
 
         /// <summary>
