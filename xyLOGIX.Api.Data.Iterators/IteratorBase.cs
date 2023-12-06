@@ -1,5 +1,6 @@
 using PostSharp.Patterns.Collections;
 using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Model;
 using PostSharp.Patterns.Threading;
 using System;
 using System.Collections;
