@@ -1,12 +1,12 @@
-using PostSharp.Patterns.Threading;
 using PostSharp.Patterns.Diagnostics;
+using PostSharp.Patterns.Threading;
 using System;
 using xyLOGIX.Api.Data.Iterators.Exceptions;
 
 namespace xyLOGIX.Api.Data.Iterators.Events
 {
     /// <summary> Provides information for IteratorError event handlers. </summary>
-[ExplicitlySynchronized]
+    [ExplicitlySynchronized]
     public class IteratorErrorEventArgs : EventArgs
     {
         /// <summary>
