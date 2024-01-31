@@ -6,7 +6,7 @@
     <ApplicationIcon>1382_cogs.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile />
-    <ProjectGuid>{F5B8CEC3-9C00-45EE-8202-97080D0C95BB}</ProjectGuid>
+    <ProjectGuid>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</ProjectGuid>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Debug\xyLOGIX.Api.Data.Iterators.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Debug\xyLOGIX.Api.Data.Iterators.Events.xml</DocumentationFile>
     <SkipPostSharp>False</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -33,7 +33,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x64\Release\xyLOGIX.Api.Data.Iterators.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\Release\xyLOGIX.Api.Data.Iterators.Events.xml</DocumentationFile>
     <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -46,7 +46,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\Debug\xyLOGIX.Api.Data.Iterators.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Debug\xyLOGIX.Api.Data.Iterators.Events.xml</DocumentationFile>
     <SkipPostSharp>False</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
@@ -59,7 +59,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>bin\x86\Release\xyLOGIX.Api.Data.Iterators.xml</DocumentationFile>
+    <DocumentationFile>bin\x86\Release\xyLOGIX.Api.Data.Iterators.Events.xml</DocumentationFile>
     <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup>
@@ -69,16 +69,10 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyName>xyLOGIX.Api.Data.Iterators</AssemblyName>
+    <AssemblyName>xyLOGIX.Api.Data.Iterators.Events</AssemblyName>
   </PropertyGroup>
   <PropertyGroup>
-    <RootNamespace>xyLOGIX.Api.Data.Iterators</RootNamespace>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>xyLOGIX.Api.Data.Iterators.Events</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -106,12 +100,14 @@
       <HintPath>..\packages\PostSharp.Patterns.Threading.Redist.2024.0.5\lib\net45\PostSharp.Patterns.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="key.snk" />
     <Compile Include="GlobalAspects.cs" />
-    <Compile Include="IteratorBase.cs" />
+    <Compile Include="IteratorErrorEventArgs.cs" />
+    <Compile Include="IteratorErrorEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -129,25 +125,9 @@
     <Content Include="1382_cogs.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\xyLOGIX.Collections.Synchronized.VS2019\xyLOGIX.Collections.Synchronized\xyLOGIX.Collections.Synchronized.csproj">
-      <Project>{33FD8195-DDE4-4245-9EDA-35836CAA40C5}</Project>
-      <Name>xyLOGIX.Collections.Synchronized</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\xyLOGIX.Core.Debug.VS2019\xyLOGIX.Core.Debug\xyLOGIX.Core.Debug.csproj">
-      <Project>{C445C052-26B6-4884-9A7B-25DC7ABC0DED}</Project>
-      <Name>xyLOGIX.Core.Debug</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Events\xyLOGIX.Api.Data.Iterators.Events.csproj">
-      <Project>{3E3DB35C-0B83-4D8C-AC6B-22A085117026}</Project>
-      <Name>xyLOGIX.Api.Data.Iterators.Events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Exceptions\xyLOGIX.Api.Data.Iterators.Exceptions.csproj">
       <Project>{C86E05F7-04BB-4A45-B264-B3BF976D5B04}</Project>
       <Name>xyLOGIX.Api.Data.Iterators.Exceptions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\xyLOGIX.Api.Data.Iterators.Interfaces\xyLOGIX.Api.Data.Iterators.Interfaces.csproj">
-      <Project>{6C7EC464-BCD6-43A7-A147-984E404F43FD}</Project>
-      <Name>xyLOGIX.Api.Data.Iterators.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
