@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.9.34616.47
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34601.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyLOGIX.Api.Data.Iterators.Events", "xyLOGIX.Api.Data.Iterators.Events\xyLOGIX.Api.Data.Iterators.Events.csproj", "{3E3DB35C-0B83-4D8C-AC6B-22A085117026}"
 EndProject
