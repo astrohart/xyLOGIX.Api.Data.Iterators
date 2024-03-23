@@ -53,15 +53,6 @@ namespace xyLOGIX.Api.Data.Iterators
             PageSize = pageSize;
         }
 
-        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
-        public event IteratorErrorEventHandler IteratorError;
-
-        /// <summary> Occurs when the end of the collection has been reached. </summary>
-        public event EventHandler LastItemReached;
-
-        /// <summary> Occurs when no items have been found in the underlying collection. </summary>
-        public event EventHandler NoItemsFound;
-
         /// <summary>
         /// Gets the element in the collection at the current position of the
         /// enumerator.
@@ -85,6 +76,20 @@ namespace xyLOGIX.Api.Data.Iterators
             => Current;
 
         /// <summary>
+        /// Gets or sets a reference to an instance of an object that represents the
+        /// current page of data.
+        /// </summary>
+        protected abstract dynamic CurrentPage { get; set; }
+
+        /// <summary>
+        /// Gets a reference to a cache of items obtained that are in excess of
+        /// what is requested, but which still need to be provided to users of this object.
+        /// </summary>
+        [Child]
+        protected AdvisableStack<T> ExcessItemCache { get; } =
+            new AdvisableStack<T>();
+
+        /// <summary>
         /// Gets or sets a <see cref="T:System.String" /> or other key that is
         /// used to look up order account history items and/or transactions for a specific
         /// asset, wallet, or account history.
@@ -96,24 +101,25 @@ namespace xyLOGIX.Api.Data.Iterators
         public dynamic Filter { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the last page of paginated
+        /// data has been read from the data source.
+        /// </summary>
+        protected bool IsLastPage { get; set; }
+
+        /// <summary>
         /// Gets the number of elements to be retrieved each time that we advance
         /// to another page.
         /// </summary>
         public int PageSize { get; set; }
 
-        /// <summary>
-        /// Gets a reference to a cache of items obtained that are in excess of
-        /// what is requested, but which still need to be provided to users of this object.
-        /// </summary>
-        [Child]
-        protected AdvisableStack<T> ExcessItemCache { get; } =
-            new AdvisableStack<T>();
+        /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
+        public event IteratorErrorEventHandler IteratorError;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the last page of paginated
-        /// data has been read from the data source.
-        /// </summary>
-        protected bool IsLastPage { get; set; }
+        /// <summary> Occurs when the end of the collection has been reached. </summary>
+        public event EventHandler LastItemReached;
+
+        /// <summary> Occurs when no items have been found in the underlying collection. </summary>
+        public event EventHandler NoItemsFound;
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing,
@@ -123,8 +129,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// For the task of consuming a paged API result to minimize network
         /// traffic, this method is meaningless.
         /// </remarks>
-        public void Dispose()
-        { }
+        public void Dispose() { }
 
         /// <summary>
         /// Gets the entire collection and returns an enumerator to be used to
@@ -282,6 +287,35 @@ namespace xyLOGIX.Api.Data.Iterators
         /// </param>
         [EntryPoint]
         protected abstract void GetCurrentPage(int pageSize = 1);
+
+        /// <summary>
+        /// Determines whether the
+        /// <see
+        ///     cref="P:PortfolioGPT.Providers.Assets.Iterators.IteratorBase`1.CurrentPage" />
+        /// has a next page or not.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true" /> if a next page exists;
+        /// <see langword="false" /> otherwise.
+        /// </returns>
+        /// <remarks>
+        /// This method accounts for <see langword="null" /> references and the
+        /// <see
+        ///     cref="P:PortfolioGPT.Providers.Assets.Iterators.IteratorBase`1.CurrentPage" />
+        /// property not having the correct type, or pointing to an empty page.
+        /// </remarks>
+        [EntryPoint, Log(AttributeExclude = true)]
+        protected abstract bool HasNextPage();
+
+        /// <summary>
+        /// Determines whether the current page of data is empty.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true" /> if the current page of data is empty;
+        /// <see langword="false" /> otherwise.
+        /// </returns>
+        [EntryPoint, Log(AttributeExclude = true)]
+        protected abstract bool IsCurrentPageEmpty();
 
         /// <summary>
         /// Raises the
