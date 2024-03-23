@@ -304,7 +304,7 @@ namespace xyLOGIX.Api.Data.Iterators
         ///     cref="P:PortfolioGPT.Providers.Assets.Iterators.IteratorBase`1.CurrentPage" />
         /// property not having the correct type, or pointing to an empty page.
         /// </remarks>
-        [EntryPoint, Log(AttributeExclude = true)]
+        [EntryPoint]
         protected abstract bool HasNextPage();
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// <see langword="true" /> if the current page of data is empty;
         /// <see langword="false" /> otherwise.
         /// </returns>
-        [EntryPoint, Log(AttributeExclude = true)]
+        [EntryPoint]
         protected abstract bool IsCurrentPageEmpty();
 
         /// <summary>
