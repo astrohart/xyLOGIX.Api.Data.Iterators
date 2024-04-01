@@ -6,6 +6,7 @@
 - [IteratorBase\`1](#T-xyLOGIX-Api-Data-Iterators-IteratorBase`1 'xyLOGIX.Api.Data.Iterators.IteratorBase`1')
   - [#ctor(pageSize)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-#ctor-System-Int32- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.#ctor(System.Int32)')
   - [Current](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Current 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.Current')
+  - [CurrentPage](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CurrentPage 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.CurrentPage')
   - [ExcessItemCache](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-ExcessItemCache 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.ExcessItemCache')
   - [Filter](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-Filter 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.Filter')
   - [IsLastPage](#P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsLastPage 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.IsLastPage')
@@ -18,6 +19,8 @@
   - [GetCurrentPage(pageSize)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-GetCurrentPage-System-Int32- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.GetCurrentPage(System.Int32)')
   - [GetNext()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-GetNext 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.GetNext')
   - [HasNext()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-HasNext 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.HasNext')
+  - [HasNextPage()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-HasNextPage 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.HasNextPage')
+  - [IsCurrentPageEmpty()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsCurrentPageEmpty 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.IsCurrentPageEmpty')
   - [MoveNext()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-MoveNext 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.MoveNext')
   - [OnIteratorError(e)](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-OnIteratorError-xyLOGIX-Api-Data-Iterators-Events-IteratorErrorEventArgs- 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.OnIteratorError(xyLOGIX.Api.Data.Iterators.Events.IteratorErrorEventArgs)')
   - [OnLastItemReached()](#M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-OnLastItemReached 'xyLOGIX.Api.Data.Iterators.IteratorBase`1.OnLastItemReached')
@@ -76,6 +79,14 @@ enumerator.
 
 The element in the collection at the current position of the
 enumerator.
+
+<a name='P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-CurrentPage'></a>
+### CurrentPage `property`
+
+##### Summary
+
+Gets or sets a reference to an instance of an object that represents the
+current page of data.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-ExcessItemCache'></a>
 ### ExcessItemCache `property`
@@ -268,6 +279,46 @@ Determines whether the collection has more items.
 ##### Returns
 
 `True` if the collection has more items; `false` otherwise.
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-HasNextPage'></a>
+### HasNextPage() `method`
+
+##### Summary
+
+Determines whether the
+[CurrentPage](#P-PortfolioGPT-Providers-Assets-Iterators-IteratorBase`1-CurrentPage 'PortfolioGPT.Providers.Assets.Iterators.IteratorBase`1.CurrentPage')
+has a next page or not.
+
+##### Returns
+
+`true` if a next page exists;
+`false` otherwise.
+
+##### Parameters
+
+This method has no parameters.
+
+##### Remarks
+
+This method accounts for `null` references and the
+[CurrentPage](#P-PortfolioGPT-Providers-Assets-Iterators-IteratorBase`1-CurrentPage 'PortfolioGPT.Providers.Assets.Iterators.IteratorBase`1.CurrentPage')
+property not having the correct type, or pointing to an empty page.
+
+<a name='M-xyLOGIX-Api-Data-Iterators-IteratorBase`1-IsCurrentPageEmpty'></a>
+### IsCurrentPageEmpty() `method`
+
+##### Summary
+
+Determines whether the current page of data is empty.
+
+##### Returns
+
+`true` if the current page of data is empty;
+`false` otherwise.
 
 ##### Parameters
 
