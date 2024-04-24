@@ -102,7 +102,7 @@ namespace xyLOGIX.Api.Data.Iterators
 
         /// <summary>
         /// Gets or sets a value indicating whether the last page of paginated
-        /// data has been read from the data source.
+        /// data has been read from the data quote.
         /// </summary>
         protected bool IsLastPage { get; set; }
 
@@ -234,7 +234,7 @@ namespace xyLOGIX.Api.Data.Iterators
         public abstract void Reset();
 
         /// <summary>
-        /// Caches excess items in a collection retrieved from the data source
+        /// Caches excess items in a collection retrieved from the data quote
         /// that we are iterating over.
         /// </summary>
         /// <param name="excessItems">
