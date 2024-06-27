@@ -116,7 +116,7 @@ is platform-specific.
 ##### Summary
 
 Gets or sets a value indicating whether the last page of paginated
-data has been read from the data quote.
+data has been read from the data source.
 
 <a name='P-xyLOGIX-Api-Data-Iterators-IteratorBase`1-PageSize'></a>
 ### PageSize `property`
@@ -161,7 +161,7 @@ created or before any static members are referenced.
 
 ##### Summary
 
-Caches excess items in a collection retrieved from the data quote
+Caches excess items in a collection retrieved from the data source
 that we are iterating over.
 
 ##### Parameters
