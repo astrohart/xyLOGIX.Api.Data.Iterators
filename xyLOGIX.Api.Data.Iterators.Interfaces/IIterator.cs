@@ -21,7 +21,7 @@ namespace xyLOGIX.Api.Data.Iterators.Interfaces
         /// Gets the number of elements to be retrieved each time that we advance
         /// to another page.
         /// </summary>
-        int PageSize { get; set; }
+        int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         event IteratorErrorEventHandler IteratorError;

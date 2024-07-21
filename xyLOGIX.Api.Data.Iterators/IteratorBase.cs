@@ -79,14 +79,14 @@ namespace xyLOGIX.Api.Data.Iterators
         /// Gets or sets a reference to an instance of an object that represents the
         /// current page of data.
         /// </summary>
-        protected abstract dynamic CurrentPage { get; set; }
+        protected abstract dynamic CurrentPage { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary>
         /// Gets a reference to a cache of items obtained that are in excess of
         /// what is requested, but which still need to be provided to users of this object.
         /// </summary>
         [Child]
-        protected AdvisableStack<T> ExcessItemCache { get; } =
+        protected AdvisableStack<T> ExcessItemCache { [DebuggerStepThrough] get; } =
             new AdvisableStack<T>();
 
         /// <summary>
@@ -98,19 +98,19 @@ namespace xyLOGIX.Api.Data.Iterators
         /// This property is of <c>dynamic</c> type since the type of filter data
         /// is platform-specific.
         /// </remarks>
-        public dynamic Filter { get; set; }
+        public dynamic Filter { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the last page of paginated
         /// data has been read from the data source.
         /// </summary>
-        protected bool IsLastPage { get; set; }
+        protected bool IsLastPage { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary>
         /// Gets the number of elements to be retrieved each time that we advance
         /// to another page.
         /// </summary>
-        public int PageSize { get; set; }
+        public int PageSize { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
 
         /// <summary> Occurs when an exception is thrown during the iteration process. </summary>
         public event IteratorErrorEventHandler IteratorError;

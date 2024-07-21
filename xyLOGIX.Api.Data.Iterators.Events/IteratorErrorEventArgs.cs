@@ -49,6 +49,6 @@ namespace xyLOGIX.Api.Data.Iterators.Events
         /// <see cref="T:xyLOGIX.Api.Data.Iterators.Exceptions.IteratorException" /> that
         /// provides more information about the error.
         /// </summary>
-        public IteratorException Exception { get; set; }
+        public IteratorException Exception { [DebuggerStepThrough] get; [DebuggerStepThrough] set; }
     }
 }
