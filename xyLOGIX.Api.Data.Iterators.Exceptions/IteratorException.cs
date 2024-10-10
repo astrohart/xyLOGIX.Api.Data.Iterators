@@ -1,4 +1,4 @@
-using PostSharp.Patterns.Threading;
+﻿using PostSharp.Patterns.Threading;
 using System;
 
 namespace xyLOGIX.Api.Data.Iterators.Exceptions

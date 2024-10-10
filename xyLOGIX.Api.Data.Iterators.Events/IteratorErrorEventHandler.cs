@@ -1,4 +1,4 @@
-namespace xyLOGIX.Api.Data.Iterators.Events
+﻿namespace xyLOGIX.Api.Data.Iterators.Events
 {
     /// <summary> Represents a handler for a IteratorError event. </summary>
     /// <param name="sender">
