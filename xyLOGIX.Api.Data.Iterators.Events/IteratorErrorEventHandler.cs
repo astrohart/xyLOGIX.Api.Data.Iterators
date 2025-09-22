@@ -15,7 +15,7 @@
     /// handle the IteratorError event.
     /// </remarks>
     public delegate void IteratorErrorEventHandler(
-        object sender,
-        IteratorErrorEventArgs e
+        [NotLogged] object sender,
+        [NotLogged] IteratorErrorEventArgs e
     );
 }
