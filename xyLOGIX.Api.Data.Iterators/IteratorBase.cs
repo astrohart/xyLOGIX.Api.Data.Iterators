@@ -328,7 +328,7 @@ namespace xyLOGIX.Api.Data.Iterators
         /// contains the event data.
         /// </param>
         [Yielder]
-        protected virtual void OnIteratorError(IteratorError[NotLogged] EventArgs e)
+        protected virtual void OnIteratorError([NotLogged] IteratorErrorEventArgs e)
             => IteratorError?.Invoke(this, e);
 
         /// <summary>
